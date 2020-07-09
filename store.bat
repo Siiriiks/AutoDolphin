@@ -3,6 +3,7 @@ title Dolphin Game Store
 cd /D "%~dp0"
 del s-updater.bat
 set wget="..\Installer\wget.exe"
+FOR /F "tokens=3 delims= " %%G IN ('REG QUERY "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') DO (SET docsdir=%%G)
 
 set version=1
 
@@ -114,11 +115,14 @@ if %menu2%==1 (
 )
 if %menu2%==2 (
 	echo Downloading Mario Kart Wii Codes...
-	
+	%wget% -q --show-progress --no-check-certificate "https://raw.githubusercontent.com/Siiriiks/AutoDolphin/master/Codes/RMCP01.ini" -O "%docsdir%\Dolphin Emulator\GameSettings\RMCP01.ini"
+	echo Download complete!
 )
 if %menu2%==3 (
 	echo Downloading Mario Kart Wii...
 	%wget% -q --show-progress --no-check-certificate "https://www.dropbox.com/s/ahah0utz1x1dlef/RMCP01%20%28Mario%20Kart%20Wii%29.wbfs?dl=1" -O "RMCP01 (Mario Kart Wii).wbfs"
+	echo Downloading Mario Kart Wii Codes...
+	%wget% -q --show-progress --no-check-certificate "https://raw.githubusercontent.com/Siiriiks/AutoDolphin/master/Codes/RMCP01.ini" -O "%docsdir%\Dolphin Emulator\GameSettings\RMCP01.ini"
 	echo Download complete!
 )
 echo Returning to Menu...
@@ -223,7 +227,7 @@ set /p menu2=Please enter an option:
 echo.
 if %menu2%==1 (
 	echo Downloading Super Mario Galaxy...
-	%wget% -q --show-progress --no-check-certificate "" -O "RMGP01 (Super Mario Galaxy).wbfs"
+	%wget% -q --show-progress --no-check-certificate "https://www.dropbox.com/s/2gyr92niy9z0toz/RMGP01%20%28Super%20Mario%20Galaxy%29.wbfs?dl=1" -O "RMGP01 (Super Mario Galaxy).wbfs"
 	echo Download complete!
 )
 echo Returning to Menu...
