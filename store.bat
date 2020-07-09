@@ -1,8 +1,10 @@
 @echo off
 title Dolphin Game Store
-del updater.bat
+cd /D "%~dp0"
+del s-updater.bat
 set wget="..\Installer\wget.exe"
-set mega="..\Installer\megatools\megatools.exe"
+
+set version=1
 
 :check
 cls
@@ -11,9 +13,9 @@ echo Dolphin Game Store
 echo ----------------------------------------------------------------------------------------------------
 echo.
 echo Checking for Updates...
-%wget% https://raw.githubusercontent.com/Siiriiks/AutoDolphin/master/v.txt -q --no-check-certificate
-set /p latest=<v.txt
-del v.txt
+%wget% https://raw.githubusercontent.com/Siiriiks/AutoDolphin/master/sv.txt -q --no-check-certificate
+set /p latest=<sv.txt
+del sv.txt
 if %latest% GTR %version% goto update
 cls
 echo ----------------------------------------------------------------------------------------------------
@@ -21,7 +23,7 @@ echo Dolphin Game Store
 echo ----------------------------------------------------------------------------------------------------
 echo.
 echo No updates available.
-sleep 2
+sleep 1
 goto menu
 
 :update
@@ -32,11 +34,10 @@ echo ---------------------------------------------------------------------------
 echo.
 echo Update available!
 echo Downloading Updater...
-%wget% https://raw.githubusercontent.com/Siiriiks/AutoDolphin/master/updater.bat -q --no-check-certificate
-echo.
+%wget% https://raw.githubusercontent.com/Siiriiks/AutoDolphin/master/s-updater.bat -q --no-check-certificate
 echo Launching updater...
 sleep 1
-start updater.bat
+start s-updater.bat
 exit
 
 :menu
@@ -101,10 +102,21 @@ echo.
 echo Please select an option (Other to return to Menu)
 echo.
 echo 1) Download
+echo 2) Codes (To play online)
+echo 3) All
 echo.
 set /p menu2=Please enter an option: 
 echo.
 if %menu2%==1 (
+	echo Downloading Mario Kart Wii...
+	%wget% -q --show-progress --no-check-certificate "https://www.dropbox.com/s/ahah0utz1x1dlef/RMCP01%20%28Mario%20Kart%20Wii%29.wbfs?dl=1" -O "RMCP01 (Mario Kart Wii).wbfs"
+	echo Download complete!
+)
+if %menu2%==2 (
+	echo Downloading Mario Kart Wii Codes...
+	
+)
+if %menu2%==3 (
 	echo Downloading Mario Kart Wii...
 	%wget% -q --show-progress --no-check-certificate "https://www.dropbox.com/s/ahah0utz1x1dlef/RMCP01%20%28Mario%20Kart%20Wii%29.wbfs?dl=1" -O "RMCP01 (Mario Kart Wii).wbfs"
 	echo Download complete!
@@ -148,7 +160,7 @@ set /p menu2=Please enter an option:
 echo.
 if %menu2%==1 (
 	echo Downloading Wii Sports Resort...
-	%wget% -q --show-progress --no-check-certificate "" -O "RZTP01 (Wii Sports Resort).wbfs"
+	%wget% -q --show-progress --no-check-certificate "https://www.dropbox.com/s/ktm4zt6b2bqgmrn/RZTP01%20%28Wii%20Sports%20Resort%29.wbfs?dl=1" -O "RZTP01 (Wii Sports Resort).wbfs"
 	echo Download complete!
 )
 echo Returning to Menu...
@@ -191,6 +203,48 @@ echo.
 if %menu2%==1 (
 	echo Downloading Newer Super Mario Bros. Wii...
 	%wget% -q --show-progress --no-check-certificate "https://www.dropbox.com/s/rtbo1751dkeo3nl/SMNP03%20%28Newer%20Super%20Mario%20Bros.%20Wii%29.wbfs?dl=1" -O "SMNP03 (Newer Super Mario Bros. Wii).wbfs"
+	echo Download complete!
+)
+echo Returning to Menu...
+sleep 2
+goto menu
+
+:RMGP01
+cls
+echo ----------------------------------------------------------------------------------------------------
+echo Dolphin Game Store  -=-  RMGP01 (Super Mario Galaxy)
+echo ----------------------------------------------------------------------------------------------------
+echo.
+echo Please select an option (Other to return to Menu)
+echo.
+echo 1) Download
+echo.
+set /p menu2=Please enter an option: 
+echo.
+if %menu2%==1 (
+	echo Downloading Super Mario Galaxy...
+	%wget% -q --show-progress --no-check-certificate "" -O "RMGP01 (Super Mario Galaxy).wbfs"
+	echo Download complete!
+)
+echo Returning to Menu...
+sleep 2
+goto menu
+
+:SB4P01
+cls
+echo ----------------------------------------------------------------------------------------------------
+echo Dolphin Game Store  -=-  SB4P01 (Super Mario Galaxy 2)
+echo ----------------------------------------------------------------------------------------------------
+echo.
+echo Please select an option (Other to return to Menu)
+echo.
+echo 1) Download
+echo.
+set /p menu2=Please enter an option: 
+echo.
+if %menu2%==1 (
+	echo Downloading Super Mario Galaxy 2...
+	%wget% -q --show-progress --no-check-certificate "https://www.dropbox.com/s/70cvopdbadcw2x0/SB4P01%20%28Super%20Mario%20Galaxy%202%29.wbfs?dl=1" -O "SB4P01 (Super Mario Galaxy 2).wbfs"
 	echo Download complete!
 )
 echo Returning to Menu...
