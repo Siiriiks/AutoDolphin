@@ -3,10 +3,11 @@ title Dolphin Game Store
 cd /D "%~dp0"
 del s-updater.bat
 cls
-set wget="..\Installer\wget.exe"
+set wget="%~dp0..\Installer\wget.exe"
+set sleep="%~dp0..\Installer\sleep.exe"
 FOR /F "tokens=3 delims= " %%G IN ('REG QUERY "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') DO (SET docsdir=%%G)
 
-set version=2
+set version=3
 
 :check
 cls
@@ -25,7 +26,7 @@ echo Dolphin Game Store
 echo ----------------------------------------------------------------------------------------------------
 echo.
 echo No updates available.
-sleep 1
+%sleep% 1
 goto menu
 
 :update
@@ -38,7 +39,7 @@ echo Update available!
 echo Downloading Updater...
 %wget% https://raw.githubusercontent.com/Siiriiks/AutoDolphin/master/s-updater.bat -q --no-check-certificate
 echo Launching updater...
-sleep 1
+%sleep% 1
 start s-updater.bat
 exit
 
@@ -77,7 +78,7 @@ if %menu%==11 goto RZTP01
 echo.
 echo Invalid option!
 echo Returning to Menu...
-sleep 3
+%sleep 3%
 goto menu
 
 
@@ -113,7 +114,7 @@ if %menu2%==3 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -135,7 +136,7 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -157,7 +158,7 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -179,7 +180,7 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -201,7 +202,7 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -223,7 +224,7 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -245,7 +246,7 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -267,7 +268,7 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -289,7 +290,7 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -311,7 +312,7 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
 
@@ -333,6 +334,6 @@ if %menu2%==1 (
 	echo Download complete!
 )
 echo Returning to Menu...
-sleep 2
+%sleep% 2
 goto menu
 
