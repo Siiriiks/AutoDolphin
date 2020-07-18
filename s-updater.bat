@@ -1,8 +1,8 @@
 @echo off
 title Dolphin Game Store - Updater
 cd /D "%~dp0"
-set wget="..\Installer\wget.exe"
-set sleep="..\Installer\sleep.exe"
+set wget="%~dp0..\Installer\wget.exe"
+set sleep="%~dp0..\Installer\sleep.exe"
 cls
 
 echo ----------------------------------------------------------------------------------------------------
