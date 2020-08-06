@@ -25,8 +25,9 @@ Installer\fart.exe -q "%docsdir%\Dolphin Emulator\Config\Dolphin.ini" GAMEPATH "
 echo Finding Desktop folder location...
 for /f "usebackq tokens=1,2,*" %%B IN (`reg query "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Desktop`) do set desktopdir=%%D
 echo Found Desktop folder! (%desktopdir%)
-echo Creating Shortcut...
+echo Creating Shortcuts...
 Installer\shortcut /a:c /f:"%desktopdir%\Dolphin.lnk" /t:"%cd%\Dolphin.exe"
+Installer\shortcut /a:c /f:"%ProgramData%\Microsoft\Windows\Start Menu\Programs\Dolphin.lnk" /t:"%cd%\Dolphin.exe"
 echo Finished!
 %sleep% 3
 exit
