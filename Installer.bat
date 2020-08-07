@@ -5,7 +5,7 @@ set wget="%~dp0wget.exe"
 set sleep="%~dp0sleep.exe"
 del updater.bat
 
-set version=2
+set version=3
 
 :check
 echo Checking for Updates...
