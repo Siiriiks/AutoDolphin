@@ -1,7 +1,7 @@
 @echo off
 title Dolphin Game Store
 cd /D "%~dp0"
-del s-updater.bat
+del /s s-updater.bat >nul 2>&1
 cls
 set wget="%~dp0..\Installer\wget.exe"
 set sleep="%~dp0..\Installer\sleep.exe"
@@ -16,9 +16,10 @@ echo Dolphin Game Store
 echo ----------------------------------------------------------------------------------------------------
 echo.
 echo Checking for Updates...
+del /s sv.txt >nul 2>&1
 %wget% https://raw.githubusercontent.com/Siiriiks/AutoDolphin/master/sv.txt -q --no-check-certificate
 set /p latest=<sv.txt
-del sv.txt
+del /s sv.txt >nul 2>&1
 if %latest% GTR %version% goto update
 cls
 echo ----------------------------------------------------------------------------------------------------
