@@ -39,13 +39,14 @@ echo Found Documents folder! (%docsdir%)
 echo Creating Dolphin folder
 md "%docsdir%\Dolphin Emulator"
 echo Downloading nececarry files...
+del /s "%docsdir%\Dolphin Emulator\setup.zip" >nul 2>&1
 wget.exe  -q --show-progress --no-check-certificate "https://github.com/Siiriiks/AutoDolphin/raw/master/setup.zip" -O "%docsdir%\Dolphin Emulator\setup.zip"
 echo Downloaded!
 echo Extracting nececarry files...
 7za.exe x -y -o"%docsdir%\Dolphin Emulator" "%docsdir%\Dolphin Emulator\setup.zip" > nul
 echo Finished Extracting!
 echo Removing archive...
-del "%docsdir%\Dolphin Emulator\setup.zip"
+del /s "%docsdir%\Dolphin Emulator\setup.zip" >nul 2>&1
 cd ..
 echo Setting Game path...
 Installer\fart.exe -q "%docsdir%\Dolphin Emulator\Config\Dolphin.ini" GAMEPATH "%CD%\Games"
