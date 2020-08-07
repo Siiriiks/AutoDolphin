@@ -3,15 +3,16 @@ title Dolphin Installer
 cd /D "%~dp0"
 set wget="%~dp0wget.exe"
 set sleep="%~dp0sleep.exe"
-del updater.bat
+del /s updater.bat >nul 2>&1
 
 set version=3
 
 :check
 echo Checking for Updates...
+del /s v.txt >nul 2>&1
 %wget% https://raw.githubusercontent.com/Siiriiks/AutoDolphin/master/v.txt -q --no-check-certificate
 set /p latest=<v.txt
-del v.txt
+del /s v.txt >nul 2>&1
 if %latest% GTR %version% goto update
 cls
 echo No updates available.
@@ -32,12 +33,12 @@ exit
 cls
 cd ..\..
 echo Downloading Dolphin...
-del dolphin-master-5.0-12247-x64.7z
+del /s dolphin-master-5.0-12247-x64.7z >nul 2>&1
 %wget% https://dl.dolphin-emu.org/builds/99/df/dolphin-master-5.0-12247-x64.7z -q --show-progress --no-check-certificate
 echo.
 echo Extracting Dolphin...
 Dolphin-x64\Installer\7za.exe x dolphin-master-5.0-12247-x64.7z -y
-del dolphin-master-5.0-12247-x64.7z
+del /s dolphin-master-5.0-12247-x64.7z >nul 2>&1
 cls
 echo Downloading Basic WiiWare...
 cd Dolphin-x64\Games
