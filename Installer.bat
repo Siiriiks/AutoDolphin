@@ -5,7 +5,7 @@ set wget="%~dp0wget.exe"
 set sleep="%~dp0sleep.exe"
 del /s updater.bat >nul 2>&1
 
-set version=3
+set version=4
 
 :check
 echo Checking for Updates...
@@ -34,11 +34,11 @@ cls
 cd ..\..
 echo Downloading Dolphin...
 del /s dolphin-master-5.0-12247-x64.7z >nul 2>&1
-%wget% https://dl.dolphin-emu.org/builds/99/df/dolphin-master-5.0-12247-x64.7z -q --show-progress --no-check-certificate
+%wget% https://dl.dolphin-emu.org/builds/3a/8d/dolphin-master-5.0-13178-x64.7z -q -O "dolphin-master.7z" --show-progress --no-check-certificate 
 echo.
 echo Extracting Dolphin...
-Dolphin-x64\Installer\7za.exe x dolphin-master-5.0-12247-x64.7z -y
-del /s dolphin-master-5.0-12247-x64.7z >nul 2>&1
+Dolphin-x64\Installer\7za.exe x dolphin-master.7z -y
+del /s dolphin-master.7z >nul 2>&1
 cls
 echo Downloading Basic WiiWare...
 cd Dolphin-x64\Games
